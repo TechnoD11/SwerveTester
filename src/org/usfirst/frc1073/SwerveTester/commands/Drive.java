@@ -17,9 +17,9 @@ import org.usfirst.frc1073.SwerveTester.Robot;
 /**
  *
  */
-public class  DriveFrontLeftDir extends Command {
+public class  Drive extends Command {
 
-    public DriveFrontLeftDir() {
+    public Drive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -35,6 +35,35 @@ public class  DriveFrontLeftDir extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double speed = -Robot.oi.getdriver().getY();
+    	double twist = Robot.oi.getdriver().getTwist();
+    	
+    	twist = twist / 2;
+    	
+    	Robot.drivetrain.driveBackLeftSpeed(speed);
+    	Robot.drivetrain.driveBackRightSpeed(speed);
+    	Robot.drivetrain.driveFrontLeftSpeed(speed);
+    	Robot.drivetrain.driveFrontRightSpeed(speed);
+    	
+    	double changeDir = Robot.drivetrain.getDir();
+    	if(changeDir == 0){
+    		Robot.drivetrain.driveFrontLeftDir(twist);
+    	}
+    	else if(changeDir == 1){
+    		Robot.drivetrain.driveFrontRightDir(twist);
+    	}
+    	else if(changeDir == 2){
+    		Robot.drivetrain.driveBackLeftDir(twist);
+    	}
+    	else if(changeDir == 3){
+    		Robot.drivetrain.driveBackRightDir(twist);
+    	}
+    	else if(changeDir == 4){
+    		Robot.drivetrain.driveBackLeftDir(twist);
+    		Robot.drivetrain.driveBackRightDir(twist);
+    		Robot.drivetrain.driveFrontLeftDir(twist);
+    		Robot.drivetrain.driveFrontRightDir(twist);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,10 +73,12 @@ public class  DriveFrontLeftDir extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drivetrain.stopAll();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

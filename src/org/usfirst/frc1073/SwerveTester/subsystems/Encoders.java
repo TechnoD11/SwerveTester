@@ -43,5 +43,17 @@ public class Encoders extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public double getFrontLeftPotAngle(){
+    	return frontLeftPot.get();
+    }
+    public double getFrontRightPotAngle(){
+    	return frontRightPot.get();
+    }
+    public double getBackLeftPotAngle(){
+    	return backLeftPot.get();
+    }
+    public double getBackRightPotAngle(){
+    	return backRightPot.get();
+    }
 }
 

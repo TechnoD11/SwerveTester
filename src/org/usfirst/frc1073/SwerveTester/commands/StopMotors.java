@@ -17,9 +17,9 @@ import org.usfirst.frc1073.SwerveTester.Robot;
 /**
  *
  */
-public class  DriveBackRightDir extends Command {
+public class  StopMotors extends Command {
 
-    public DriveBackRightDir() {
+    public StopMotors() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 
@@ -31,6 +31,7 @@ public class  DriveBackRightDir extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.drivetrain.stopAll();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,7 +40,7 @@ public class  DriveBackRightDir extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -49,5 +50,6 @@ public class  DriveBackRightDir extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

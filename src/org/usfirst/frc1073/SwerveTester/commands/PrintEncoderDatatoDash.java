@@ -12,6 +12,8 @@
 package org.usfirst.frc1073.SwerveTester.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc1073.SwerveTester.Robot;
 
 /**
@@ -35,6 +37,10 @@ public class  PrintEncoderDatatoDash extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putNumber("Front Left Encoder: ", Robot.encoders.getFrontLeftPotAngle());
+    	SmartDashboard.putNumber("Front Right Encoder: ", Robot.encoders.getFrontRightPotAngle());
+    	SmartDashboard.putNumber("Back Left Encoder: ", Robot.encoders.getBackLeftPotAngle());
+    	SmartDashboard.putNumber("Back Right Encoder: ", Robot.encoders.getBackRightPotAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
